@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="purchaseForm">
+      <input type="email" placeholder="email" id="loginEmail" />
+      <input type="text" id="data" placeholder="data" />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+  <script>
+    document
+      .getElementById("purchaseForm")
+      .addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const email = document.getElementById("loginEmail").value;
+        const data = document.getElementById("data").value;
+        const body = { email: email, data: data };
+        console.log(body);
+        const rawResponse = await fetch(
+          "https://cd2f-103-94-134-112.ngrok.io/sendEmail",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
+          }
+        );
+        const content = await rawResponse.json();
+      });
+  </script>
+</html>
