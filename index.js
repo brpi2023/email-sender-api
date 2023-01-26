@@ -38,7 +38,7 @@ app.post("/sendMail", (req, res) => {
   const mailOptionsAdmin = {
     from: process.env.EMAIL,
     to: process.env.ADMIN_EMAIL,
-    subject: "Regarding your game purchase",
+    subject: "FORM PURCHASE",
     text: req.body.data,
   };
   transporter.sendMail(mailOptionsAdmin, (err, info) => {
