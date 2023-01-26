@@ -25,7 +25,7 @@ app.post("/sendMail", (req, res) => {
     from: process.env.EMAIL,
 
     to: req.body.email,
-    subject: "Regarding your game purchase",
+    subject: "FORM PURCHASE",
     text: req.body.data,
   };
   transporter.sendMail(mailOptionsCustomer, (err, info) => {
